@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+
+    postgres:
+        image: ${REPO_PG}
+        container_name: ${PG_HOST}
+        ports: 
+          - 5433:${PG_PORT}
+        environment:
+            POSTGRES_HOST: ${PG_HOST}
+            POSTGRES_USER: ${PG_USER} 
+            POSTGRES_PASSWORD: ${PG_PASS}
+            POSTGRES_DB: ${PG_DB}
+        volumes:
+          - ./data/postgres-db-volume:/var/lib/postgresql/data
+        healthcheck:
+            test: ["CMD", "pg_isready", "-U", "${PG_USER}"]
+            interval: 5s
+            retries: 5
+        restart: always
+    
+    fastapi:
+        build: .
+        container_name: ${FASTAPI_HOST}
+        ports:
+          - 08:80
+        volumes:
+          - ./src:/usr/src/app
+        environment:
+            NAME: ${NAME}
+            POSTGRES_HOST: ${PG_HOST}
+            POSTGRES_USER: ${PG_USER}
+            POSTGRES_PASSWORD: ${PG_PASS}
+            POSTGRES_DB: ${PG_DB}
+

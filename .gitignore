@@ -1,0 +1,10 @@
+# IDE stuff
+.idea/
+.vscode/
+
+
+# Virtual environment 
+venv/
+
+# data stuff
+data/*
