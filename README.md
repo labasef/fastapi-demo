@@ -2,18 +2,18 @@
 
 This project is used to demonstrate Fast API and can also be used as a template for projects requiring an API.
 
-## Prerequisites 
+## Prerequisites :computer:
 
 This project uses `docker` and `docker-compose` (version 3.9).
 
-## External documentation
+## External documentation :clipboard:
 
 - [docker-compose](https://docs.docker.com/compose/ "docker-compose")
 - [dockerfile](https://docs.docker.com/engine/reference/builder/ "dockerfile")
 - [PostgreSQL](https://www.postgresql.org/docs/15/index.html "postgresql")
 - [FastAPI](https://fastapi.tiangolo.com/ "fastapi")
 
-## Overview
+## Overview :eyes:
 
 This project is made of two docker container.
 The first one hosts the postgresql database.
@@ -21,7 +21,7 @@ The second one serves the API.
 
 An additional scriptlet `get-api.py` acts as a wrapper for the HTTP GET method.
 
-## Build
+## Build :wrench:
 
 In order to to build the project, from the folder where the `docker-compose.yml` file is, use the following command:
 
@@ -45,7 +45,7 @@ Once your project is up and running, if not in detached mode you will see the fo
 fastapi_app | INFO:     Uvicorn running on http://0.0.0.0:80 (Press CTRL+C to quit)
 ```
 
-## Usage
+## Usage :fire:
 
 The API is serve on your local host on port 8 (port mapping is defined in the docker-compose.yml):
 [Try it here](https://localhost:8/ "fastapi_demo")
@@ -55,4 +55,8 @@ Note: if the API rune on an AWS VM, you will need to forward port 8 of your loca
 qcc tunnel 8 [--machine <ec2_fastapi>]
 ```
 
+### Documentation :pencil:
+
+:star2: Fast API generates the endpoints' documentation automatically:
+[See the documentation](https://localhost:8/docs "fastapi_demo - docs")
 
