@@ -6,5 +6,5 @@
 # Virtual environment 
 venv/
 
-# data stuff
-data/*
+# db stuff
+data/postgres-db-volume/
