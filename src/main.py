@@ -2,6 +2,7 @@
 
 import os
 from fastapi import FastAPI
+from starlette.requests import Request
 from db.postgres import PgConn
 from models.items import ItemModel, CreateItemModel, ResponseModel
 
@@ -9,8 +10,8 @@ app = FastAPI()
 
 
 @app.get("/")
-def read_root():
-    return {"Hello": os.getenv("NAME")}
+def read_root(request: Request):
+    return {"Hello": os.getenv("NAME"), "Browse items": f"{str(request.url)}items"}
 
 
 @app.get("/items/{item_id}")
