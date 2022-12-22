@@ -21,6 +21,30 @@ The second one serves the API.
 
 An additional scriptlet `get-api.py` acts as a wrapper for the HTTP GET method.
 
+### Data model :page_facing_up:
+
+The data model was kept as simple as possible for this demo. It is made of a single table *items* with three columns: id, item, description; where id is a primary key.
+
+```
+   Column    |          Type          | Collation | Nullable |              Default              
+-------------+------------------------+-----------+----------+-----------------------------------
+ id          | integer                |           | not null | nextval('items_id_seq'::regclass)
+ item        | character varying      |           | not null | 
+ description | character varying(255) |           |          | 
+Indexes:
+    "items_pkey" PRIMARY KEY, btree (id)
+```
+
+### API :robot:
+
+The API layer allows interactions with the database through the provided endpoints.
+CRUD operations on items are available:
+
+- Create: http POST
+- Read: http GET
+- Update: http PATCH
+- Delete: http DELETE
+
 ## Build :wrench:
 
 In order to to build the project, from the folder where the `docker-compose.yml` file is, use the following command:
@@ -59,4 +83,15 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 
 :star2: Fast API generates the endpoints' documentation automatically:
 [See the documentation](https://localhost:8/docs "fastapi_demo - docs")
+
+### Endpoints :round_pushpin:
+
+- Welcome page: GET https://localhost:8/
+- List all items: GET https://localhost:8/items
+- See an item: GET https://localhost:8/items/{item_id}
+- Create an item: POST https://localhost:8/items body: json {"item": "item denomination", "description": "item description"} 
+- Update an item: PATCH https://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
+- Delete an item: DELETE https://localhost:8/items/{item_id}
+
+
 
