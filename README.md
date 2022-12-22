@@ -64,17 +64,17 @@ This happens because the postgres-db-volume is not owned by your user. To make i
 sudo chown -R $USER data/postgres-db-volume
 ```
 
-Once your project is up and running, if not in detached mode you will see the following log line:
+Once your project is up and running, if not in detached mode, you will see the following log line:
 ```
 fastapi_app | INFO:     Uvicorn running on http://0.0.0.0:80 (Press CTRL+C to quit)
 ```
 
 ## Usage :fire:
 
-The API is serve on your local host on port 8 (port mapping is defined in the docker-compose.yml):
+The API is served on your local host on port 8 (port mapping is defined in the docker-compose.yml):
 [Try it here](https://localhost:8/ "fastapi_demo")
 
-Note: if the API rune on an AWS VM, you will need to forward port 8 of your local machine:
+Note: if the API runs on an AWS VM, you will need to forward port 8 of your local machine:
 ```
 qcc tunnel 8 [--machine <ec2_fastapi>]
 ```
