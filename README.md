@@ -87,6 +87,7 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 ### Endpoints :round_pushpin:
 
 - Welcome page: GET https://localhost:8/
+- Add numbers together: POST https://localhost:8/addition body json {"numbers": [int]}
 - List all items: GET https://localhost:8/items
 - See an item: GET https://localhost:8/items/{item_id}
 - Create an item: POST https://localhost:8/items body: json {"item": "item denomination", "description": "item description"} 

@@ -5,6 +5,7 @@ from fastapi import FastAPI
 from starlette.requests import Request
 from db.postgres import PgConn
 from models.items import ItemModel, CreateItemModel, ResponseModel
+from models.calcul import AddModel
 
 app = FastAPI()
 
@@ -69,3 +70,8 @@ async def delete_item(item_id: int):
         conn.commit()
     return ResponseModel(item_id, "DELETED")
 
+
+@app.post("/addition")
+async def addition(model: AddModel):
+    res = sum(model.numbers)
+    return {"sum": model.numbers, "result": res}
