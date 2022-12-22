@@ -7,7 +7,8 @@
 venv/
 
 # Python stuff
-*/__pycache__/*
+*/__pycache__/
+*.pyc
 
 # db stuff
 data/postgres-db-volume/
