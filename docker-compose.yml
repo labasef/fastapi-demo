@@ -26,7 +26,7 @@ services:
         ports:
           - 08:80
         volumes:
-          - ./src:/usr/src/app
+          - ./api:/usr/src/app
         environment:
             NAME: ${NAME}
             POSTGRES_HOST: ${PG_HOST}
