@@ -3,7 +3,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class ItemSchema(BaseModel):
+class ItemModel(BaseModel):
     id: int = Field(...)
     item: str = Field(...)
     description: str = Field(...)
@@ -16,8 +16,8 @@ class ItemSchema(BaseModel):
         }
 
 
-class UpdateItemModel(BaseModel):
-    item: Optional[str]
+class CreateItemModel(BaseModel):
+    item: str
     description: Optional[str]
 
     class Config:

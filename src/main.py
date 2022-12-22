@@ -3,7 +3,7 @@
 import os
 from fastapi import FastAPI
 from db.postgres import PgConn
-from models.items import ItemSchema, UpdateItemModel
+from models.items import ItemModel, CreateItemModel, ResponseModel
 
 app = FastAPI()
 
@@ -20,7 +20,7 @@ def read_item(item_id: int):
         cur.execute(f"SELECT item, description from items where id = {item_id};")
         try:
             item, description = cur.fetchone()
-            item_schema = ItemSchema(id=item_id, item=item, description=description)
+            item_schema = ItemModel(id=item_id, item=item, description=description)
             res = item_schema
         except TypeError:
             res = "NOT FOUND!"
@@ -33,19 +33,38 @@ def read_items():
         cur = conn.cursor()
         cur.execute("SELECT id, item, description from items;")
         try:
-            res = [ItemSchema(id=_id, item=item, description=description) for _id, item, description in cur.fetchall()]
+            res = [ItemModel(id=_id, item=item, description=description) for _id, item, description in cur.fetchall()]
         except TypeError:
             res = "NOT FOUND!"
     return res
 
 
 @app.post("/items")
-async def create_item(item_model: UpdateItemModel):
+async def create_item(item_model: CreateItemModel):
+    with PgConn(os.getenv('POSTGRES_DB')) as conn:
+        cur = conn.cursor()
+        cur.execute(f"INSERT INTO items values(default, '{item_model.item}', '{item_model.description}');")
+        conn.commit()
+    return item_model
+
+
+@app.patch("/items/{item_id}")
+async def update_item(item_id: int, item_model: CreateItemModel):
+    with PgConn(os.getenv('POSTGRES_DB')) as conn:
+        cur = conn.cursor()
+        cur.execute(f"UPDATE items set item = '{item_model.item}', description = '{item_model.description}' "
+                    f"WHERE id = {item_id};")
+        conn.commit()
+    return item_model
+
+
+@app.delete("/items/{item_id}")
+async def delete_item(item_id: int):
     with PgConn(os.getenv('POSTGRES_DB')) as conn:
         # create a cursor
         cur = conn.cursor()
         # execute a statement
-        cur.execute(f"INSERT INTO items values(default, '{item_model.item}', '{item_model.description}');")
+        cur.execute(f"DELETE from items WHERE id = {item_id};")
         conn.commit()
-    return item_model
+    return ResponseModel(item_id, "DELETED")
 
