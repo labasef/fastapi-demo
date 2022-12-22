@@ -95,4 +95,14 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 - Delete an item: DELETE https://localhost:8/items/{item_id}
 
 
+### Tools
 
+The file `.tools` provides aliases and functions useful for this project. To use it:
+```
+source .tools
+```
+The available tools are the following:
+
+- `runapi` performs the docker-compose up
+- `getapi [path]` performs a get request on the API at the specified path
+- `postgres` opens a shell connection to the postgres database
