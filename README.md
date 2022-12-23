@@ -19,7 +19,20 @@ This project is made of two docker container.
 The first one hosts the postgresql database.
 The second one serves the API.
 
-An additional scriptlet `get-api.py` acts as a wrapper for the HTTP GET method.
+An additional scriptlet `api.py` acts as a wrapper for the HTTP methods.
+
+### Tools
+
+The file `.tools` provides aliases and functions useful for this project. To use it:
+```
+source .tools
+```
+The available tools are the following:
+
+- `runapi` performs the docker-compose up
+- `fastapi [-h] [--url URL] [--https [HTTPS]] {get,post,patch,put,delete} [path] [body]` performs a request on the API
+- `postgres` opens a shell connection to the postgres database
+- `create_items_table` creates the items table
 
 ### Data model :page_facing_up:
 
@@ -94,15 +107,3 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 - Update an item: PATCH https://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
 - Delete an item: DELETE https://localhost:8/items/{item_id}
 
-
-### Tools
-
-The file `.tools` provides aliases and functions useful for this project. To use it:
-```
-source .tools
-```
-The available tools are the following:
-
-- `runapi` performs the docker-compose up
-- `fastapi [-h] [--url URL] [--https [HTTPS]] {get,post,patch,put,delete} [path] [body]` performs a request on the API
-- `postgres` opens a shell connection to the postgres database
