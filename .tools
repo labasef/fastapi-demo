@@ -2,4 +2,4 @@ source .env
 
 alias postgres="docker exec -it ${PG_HOST} /usr/bin/psql ${PG_DB} -U ${PG_PASS}"
 alias runapi="docker-compose up"
-alias getapi="python3 get-api.py"
+alias api="python3 api.py --url localhost:8"
