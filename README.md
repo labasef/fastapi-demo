@@ -104,5 +104,5 @@ source .tools
 The available tools are the following:
 
 - `runapi` performs the docker-compose up
-- `getapi [path]` performs a get request on the API at the specified path
+- `fastapi [-h] [--url URL] [--https [HTTPS]] {get,post,patch,put,delete} [path] [body]` performs a request on the API
 - `postgres` opens a shell connection to the postgres database
