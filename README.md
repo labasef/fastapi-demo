@@ -107,3 +107,126 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 - Update an item: PATCH https://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
 - Delete an item: DELETE https://localhost:8/items/{item_id}
 
+## API Clients
+
+For GET requests, you can use your web browser and simply enter the url of the endpoint you want to request.
+
+### Postman :rocket:
+
+[Postman](https://www.postman.com/) is a complete API platform for building, testing and using APIs. You can save requests and build entire test scenarii.
+
+### Python requests package
+
+[Documentation](https://requests.readthedocs.io/en/latest/) This is a widely used Python package when dealing with API. If you are building a client application to a FastAPI application, you will definitely need to use it.
+
+### CLI
+
+If you work on a VM with no GUI, using the command line interface may be your only option. There are tools you can use or you can build your own.
+
+- [CURL](https://curl.se/) - This is the most widely used command line tool for interacting with APIs. Even though it comes in really handy, it can be a hassle if you are not familiar whith shell.
+- Wrapper - Using python' requests, you can build a wrapper for the API endpoints. In this demo project, a python wrapper is provided. see the documentation in the next section:
+
+#### api.py wrapper
+
+Basic usage:
+
+```
+usage: api.py [-h] [--url URL] [--https [HTTPS]] {get,post,patch,put,delete} ...
+
+A simple wrapper to perform http on an API
+
+positional arguments:
+  {get,post,patch,put,delete}
+                        types of http methods
+
+options:
+  -h, --help            show this help message and exit
+  --url URL             The target api url; do not put the http://
+  --https [HTTPS]       Whether to use https method; default: False
+```
+
+Usage for **GET**:
+
+```
+usage: api.py get [-h] [path]
+
+positional arguments:
+  path        The path to get; do not put the full url. ex: /items
+
+options:
+  -h, --help  show this help message and exit
+```
+
+Usage for **POST**:
+
+```
+usage: api.py post [-h] path body
+
+positional arguments:
+  path        The path to post; do not put the full url. ex: /items
+  body        The body to post; should be a json string
+
+options:
+  -h, --help  show this help message and exit
+```
+
+Usage for **PATCH**:
+
+```
+usage: api.py patch [-h] path body
+
+positional arguments:
+  path        The path to patch; do not put the full url. ex: /items/2
+  body        The body to patch; should be a json string
+
+options:
+  -h, --help  show this help message and exit
+```
+
+Usage for **PUT**:
+
+```
+usage: api.py put [-h] path body
+
+positional arguments:
+  path        The path to put; do not put the full url. ex: /items/2
+  body        The body to put; should be a json string
+
+options:
+  -h, --help  show this help message and exit
+```
+
+Usage for **DELETE**:
+
+```
+usage: api.py delete [-h] path
+
+positional arguments:
+  path        The path to delete; do not put the full url. ex: /items/2
+
+options:
+  -h, --help  show this help message and exit
+```
+
+This simple wrapper can be used for any API. For the purpose of this demo project, an alias was created in the .tools file: `alias fastapi="python3 api.py --url localhost:${FASTAPI_PORT}"` As a result, after sourcing the .tools file `source .tools` you can use it simply:
+
+example of **creating** an item (id is autoincrement, in this case id=7), **retreiving** it, **updating** its description and **deleting** it: 
+```
+fastapi post /items '{"item":"bottle","description":"a bottle is a closed container designed to hold a liquid"}'
+
+>>> {"item":"bottle","description":"a bottle is a closed container designed to hold a liquid"}
+```
+```
+fastapi get /items/7
+
+>>> {"id":7,"item":"bottle","description":"a bottle is a closed container designed to hold a liquid"}
+```
+```
+fastapi patch /items/7 '{"item":"bottle","description":"a bottle is a closed container designed to hold a liquid, ex: a water bottle"}'
+>>> {"item":"bottle","description":"a bottle is a closed container designed to hold a liquid, ex: a water bottle"}
+```
+```
+fastapi delete /items/7
+>>> {"data":[7],"code":200,"message":"DELETED"}
+```
+

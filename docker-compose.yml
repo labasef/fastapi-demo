@@ -24,7 +24,7 @@ services:
         build: .
         container_name: ${FASTAPI_HOST}
         ports:
-          - 08:80
+          - ${FASTAPI_PORT}:80
         volumes:
           - ./api:/usr/src/app
         environment:

@@ -23,7 +23,7 @@ patch_parser.add_argument('body', type=str, help='The body to patch; should be a
 
 put_parser = subparsers.add_parser("put")
 put_parser.add_argument('path', type=str, help='The path to put; do not put the full url. ex: /items/2')
-patch_parser.add_argument('body', type=str, help='The body to put; should be a json string')
+put_parser.add_argument('body', type=str, help='The body to put; should be a json string')
 
 delete_parser = subparsers.add_parser("delete")
 delete_parser.add_argument('path', type=str, help='The path to delete; do not put the full url. ex: /items/2')
