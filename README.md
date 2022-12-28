@@ -122,6 +122,8 @@ For GET requests, you can use your web browser and simply enter the url of the e
 
 [Postman](https://www.postman.com/) is a complete API platform for building, testing and using APIs. You can save requests and build entire test scenarii.
 
+You can import in postman the collection for this demo project from `postman/fast_api_demo.postman_collection.json`. Open Postman, in collections click import. In the menu select file, then upload the json file.
+
 ### Python requests package
 
 [Documentation](https://requests.readthedocs.io/en/latest/) This is a widely used Python package when dealing with API. If you are building a client application to a FastAPI application, you will definitely need to use it.
