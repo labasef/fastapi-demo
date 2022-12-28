@@ -38,7 +38,7 @@ services:
             POSTGRES_DB: ${PG_DB}
         healthcheck:
             test: ["CMD", "curl", "-f", "http://${FASTAPI_HOST}:${FASTAPI_PORT_DOCKER}/health"]
-            interval: 5s
+            interval: 60s
             retries: 3
         restart: unless-stopped
 
