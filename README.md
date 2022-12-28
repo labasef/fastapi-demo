@@ -21,13 +21,13 @@ The second one serves the API.
 
 An additional scriptlet `api.py` acts as a wrapper for the HTTP methods.
 
-### Environment
+### Environment :page_facing_up:
 
 Environment variables are set in the `.env` file. The environment variables are used across the project for example for defining database connection parameters once and for all. To make them accessible from inside a docker container, you should pass them in the service definition in the `docker-compose.yml` file. The variables passed to the docker container can be accessed in python using `os.getenv("VARIABLE")`.
 
 When you add and/or change an environment variable in the `.env` file, you will need to recreate and restart the container using `docker-compose up`.
 
-### Tools
+### Tools :wrench:
 
 The file `.tools` provides aliases and functions useful for this project. To use it:
 ```
@@ -40,7 +40,7 @@ The available tools are the following:
 - `postgres` opens a shell connection to the postgres database
 - `create_items_table` creates the items table
 
-### Data model :page_facing_up:
+### Data model :floppy_disk:
 
 The data model was kept as simple as possible for this demo. It is made of a single table *items* with three columns: id, item, description; where id is a primary key.
 
@@ -64,7 +64,7 @@ CRUD operations on items are available:
 - Update: http PATCH
 - Delete: http DELETE
 
-## Build :wrench:
+## Build :nut_and_bolt:
 
 In order to to build the project, from the folder where the `docker-compose.yml` file is, use the following command:
 
@@ -114,7 +114,7 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 - Update an item: PATCH http://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
 - Delete an item: DELETE http://localhost:8/items/{item_id}
 
-## API Clients
+## API Clients :electric_plug:
 
 For GET requests, you can use your web browser and simply enter the url of the endpoint you want to request.
 
@@ -124,11 +124,11 @@ For GET requests, you can use your web browser and simply enter the url of the e
 
 You can import in postman the collection for this demo project from `postman/fast_api_demo.postman_collection.json`. Open Postman, in collections click import. In the menu select file, then upload the json file.
 
-### Python requests package
+### Python requests package :snake:
 
 [Documentation](https://requests.readthedocs.io/en/latest/) This is a widely used Python package when dealing with API. If you are building a client application to a FastAPI application, you will definitely need to use it.
 
-### CLI
+### CLI :shipit:
 
 If you work on a VM with no GUI, using the command line interface may be your only option. There are tools you can use or you can build your own.
 
