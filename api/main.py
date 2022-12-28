@@ -15,6 +15,11 @@ def read_root(request: Request):
     return {"Hello": os.getenv("NAME"), "Browse items": f"{str(request.url)}items"}
 
 
+@app.get("/health")
+def check_health(request: Request):
+    return True
+
+
 @app.get("/items/{item_id}")
 def read_item(item_id: int):
     with PgConn(os.getenv('POSTGRES_DB')) as conn:

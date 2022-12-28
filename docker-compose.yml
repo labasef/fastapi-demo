@@ -33,4 +33,9 @@ services:
             POSTGRES_USER: ${PG_USER}
             POSTGRES_PASSWORD: ${PG_PASS}
             POSTGRES_DB: ${PG_DB}
+        healthcheck:
+            test: curl --fail http://localhost:${FASTAPI_PORT}/health || exit 1
+            interval: 5s
+            retries: 3
+        restart: unless-stopped
 
