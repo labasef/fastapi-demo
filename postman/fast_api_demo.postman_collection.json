@@ -1,0 +1,146 @@
+{
+	"info": {
+		"_postman_id": "9bca6341-75b5-4ed9-8ef9-68c2beaff71b",
+		"name": "fast_api_demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8/items",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create item",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"item\": \"chair\",\n                \"description\": \"a chair is a furniture for people to sit on\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8/items",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n                \"item\": \"box\",\n                \"description\": \"a box is an object inside which you can put other objects\"\n        }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8/items/2",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"items",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "localhost:8/items/5",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"items",
+						"5"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"numbers\": [1, 2, 3]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8/addition",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"addition"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "health",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8/health",
+					"host": [
+						"localhost"
+					],
+					"port": "8",
+					"path": [
+						"health"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
