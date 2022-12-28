@@ -105,13 +105,14 @@ qcc tunnel 8 [--machine <ec2_fastapi>]
 
 ### Endpoints :round_pushpin:
 
-- Welcome page: GET https://localhost:8/
-- Add numbers together: POST https://localhost:8/addition body json {"numbers": [int]}
-- List all items: GET https://localhost:8/items
-- See an item: GET https://localhost:8/items/{item_id}
-- Create an item: POST https://localhost:8/items body: json {"item": "item denomination", "description": "item description"} 
-- Update an item: PATCH https://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
-- Delete an item: DELETE https://localhost:8/items/{item_id}
+- Health check: GET http://localhost:8/health -> Checks whether the API is running returns a boolean so it can be used in a conditional statement
+- Welcome page: GET http://localhost:8/
+- Add numbers together: POST http://localhost:8/addition body json {"numbers": [int]} -> Illustrates a POST method which does not require a database connection
+- List all items: GET http://localhost:8/items
+- See an item: GET http://localhost:8/items/{item_id}
+- Create an item: POST http://localhost:8/items body: json {"item": "item denomination", "description": "item description"} 
+- Update an item: PATCH http://localhost:8/items/{item_id} body: json {"item": "updated item denomination", "description": "updated item description"}
+- Delete an item: DELETE http://localhost:8/items/{item_id}
 
 ## API Clients
 
