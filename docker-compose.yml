@@ -21,10 +21,13 @@ services:
         restart: always
     
     fastapi:
+        depends_on:
+            postgres:
+                condition: service_healthy
         build: .
         container_name: ${FASTAPI_HOST}
         ports:
-          - ${FASTAPI_PORT}:80
+          - ${FASTAPI_PORT}:${FASTAPI_PORT_DOCKER}
         volumes:
           - ./api:/usr/src/app
         environment:
@@ -34,7 +37,7 @@ services:
             POSTGRES_PASSWORD: ${PG_PASS}
             POSTGRES_DB: ${PG_DB}
         healthcheck:
-            test: curl --fail http://localhost:${FASTAPI_PORT}/health || exit 1
+            test: ["CMD", "curl", "-f", "http://${FASTAPI_HOST}:${FASTAPI_PORT_DOCKER}/health"]
             interval: 5s
             retries: 3
         restart: unless-stopped

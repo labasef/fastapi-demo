@@ -16,7 +16,7 @@ def read_root(request: Request):
 
 
 @app.get("/health")
-def check_health(request: Request):
+def check_health():
     return True
 
 
