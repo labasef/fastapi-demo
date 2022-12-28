@@ -128,7 +128,7 @@ You can import in postman the collection for this demo project from `postman/fas
 
 [Documentation](https://requests.readthedocs.io/en/latest/) This is a widely used Python package when dealing with API. If you are building a client application to a FastAPI application, you will definitely need to use it.
 
-### CLI :shipit:
+### CLI :sunglasses:
 
 If you work on a VM with no GUI, using the command line interface may be your only option. There are tools you can use or you can build your own.
 
