@@ -21,6 +21,12 @@ The second one serves the API.
 
 An additional scriptlet `api.py` acts as a wrapper for the HTTP methods.
 
+### Environment
+
+Environment variables are set in the `.env` file. The environment variables are used across the project for example for defining database connection parameters once and for all. To make them accessible from inside a docker container, you should pass them in the service definition in the `docker-compose.yml` file. The variables passed to the docker container can be accessed in python using `os.getenv("VARIABLE")`.
+
+When you add and/or change an environment variable in the `.env` file, you will need to recreate and restart the container using `docker-compose up`.
+
 ### Tools
 
 The file `.tools` provides aliases and functions useful for this project. To use it:
