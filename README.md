@@ -25,7 +25,7 @@ An additional scriptlet `api.py` acts as a wrapper for the HTTP methods.
 
 Environment variables are set in the `.env` file. The environment variables are used across the project for example for defining database connection parameters once and for all. To make them accessible from inside a docker container, you should pass them in the service definition in the `docker-compose.yml` file. The variables passed to the docker container can be accessed in python using `os.getenv("VARIABLE")`.
 
-When you add and/or change an environment variable in the `.env` file, you will need to recreate and restart the container using `docker-compose up`.
+When you add and/or change an environment variable in the `.env` file, you will need to recreate and restart the container using `docker compose up`.
 
 ### Tools :wrench:
 
@@ -35,7 +35,7 @@ source .tools
 ```
 The available tools are the following:
 
-- `runapi` performs the docker-compose up
+- `runapi` performs the docker compose up
 - `fastapi [-h] [--url URL] [--https [HTTPS]] {get,post,patch,put,delete} [path] [body]` performs a request on the API
 - `postgres` opens a shell connection to the postgres database
 - `create_items_table` creates the items table
@@ -69,7 +69,7 @@ CRUD operations on items are available:
 In order to to build the project, from the folder where the `docker-compose.yml` file is, use the following command:
 
 ```
-docker-compose up -d
+docker compose up -d
 ```
 Note: the "-d" argument means detached mode. If you need to see the logs, do not use it; the docker process will be attached to the terminal.
 
