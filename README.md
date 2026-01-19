@@ -93,11 +93,6 @@ fastapi_app | INFO:     Uvicorn running on http://0.0.0.0:80 (Press CTRL+C to qu
 The API is served on your local host on port 8 (port mapping is defined in the docker-compose.yml):
 [Try it here](https://localhost:8/ "fastapi_demo")
 
-Note: if the API runs on an AWS VM, you will need to forward port 8 of your local machine:
-```
-qcc tunnel 8 [--machine <ec2_fastapi>]
-```
-
 ### Documentation :pencil:
 
 :star2: Fast API generates the endpoints' documentation automatically:
